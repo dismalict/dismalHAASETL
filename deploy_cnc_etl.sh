@@ -5,9 +5,9 @@
 set -e  # exit on error
 
 # Configuration
-REPO_RAW_URL="https://raw.githubusercontent.com/<your_github_username>/<repo_name>/main/cnc_etl.py"
-DEST_DIR="/home/administrator/Desktop/CNC"
-SCRIPT_NAME="dismalHAASETL.py"
+REPO_RAW_URL="https://raw.githubusercontent.com/dismalict/dismalHAASETL/main/cnc_etl.py"
+DEST_DIR="/home/administrator/Desktop/CNC/dismalHAASETL"
+SCRIPT_NAME="cnc_etl.py"
 SERVICE_NAME="cnc_alert_etl.service"
 SYSTEMD_PATH="/etc/systemd/system/$SERVICE_NAME"
 
@@ -50,5 +50,3 @@ sudo systemctl restart "$SERVICE_NAME"
 
 echo "Deployment complete. Check logs with:"
 echo "sudo journalctl -u $SERVICE_NAME -f"
-
-print("chmod +x deploy_cnc_etl.sh, ./deploy_cnc_etl.sh")
