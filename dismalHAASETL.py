@@ -30,7 +30,7 @@ target_config = {
 }
 
 # List all CNC tables you want to pull from
-cnc_tables = ["sfcnc01", "sfcnc02", "sfcnc03"]  # add all machines here
+cnc_tables = ['sfcnc01', 'sfcnc02', 'sfcnc03', 'sfcnc04', 'sfcnc05', 'sfcnc06', 'sfcnc07', 'sfcnc08', 'sfcnc09', 'sfcnc10', 'sfcnc11', 'sfcnc12', 'sfcnc13', 'sfcnc14', 'sfcnc15', 'sfcnc16', 'sfcnc17', 'sfcnc18', 'sfcnc19', 'sfcnc20', 'sfcnc21', 'sfcnc22', 'sfcnc23', 'sfcnc24']  # add all machines here
 
 def etl_loop():
     while True:
@@ -60,8 +60,16 @@ def etl_loop():
                     INSERT INTO cnc_alerts 
                     (machine_name, timestamp, mode, run_status, program, m30counter1, active_alarms, emergency_stop)
                     VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-                    ON DUPLICATE KEY UPDATE timestamp=timestamp
-                """
+                    ON DUPLICATE KEY UPDATE 
+                        timestamp = VALUES(timestamp),
+                        mode = VALUES(mode),
+                        run_status = VALUES(run_status),
+                        program = VALUES(program),
+                        m30counter1 = VALUES(m30counter1),
+                        active_alarms = VALUES(active_alarms),
+                        emergency_stop = VALUES(emergency_stop)
+                    """
+
                 values = (
                     machine_name,
                     timestamp,
