@@ -6,7 +6,7 @@ TARGET_DIR="/home/administrator/Desktop/CNC/dismalHAASETL"
 SERVICE_NAME="dismalHAASETL"
 SERVICE_FILE="/etc/systemd/system/${SERVICE_NAME}.service"
 PYTHON_BIN="/usr/bin/python3"
-SCRIPT_FILE="$TARGET_DIR/cnc_etl.py"
+SCRIPT_FILE="$TARGET_DIR/dismalHAASETL.py"
 
 # --- DEPLOY REPO ---
 echo "Deploying ETL repo..."
